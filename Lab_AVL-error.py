@@ -7,7 +7,6 @@ class Node:
         self.right = None
         self.height = 1 
 
-
 def getHeight(node):
     if not node:
         return 0
@@ -69,25 +68,24 @@ class AVLTree:
         balance = getBalance(node)
 
         if balance > 1 and getBalance(node.left) >= 0:
-             rotate_right(node) 
+            return rotate_right(node) 
         elif balance > 1 and getBalance(node.left) < 0:
             node.left = rotate_left(node.left)
-            rotate_right(node) 
+            return rotate_right(node) 
         elif balance < -1 and getBalance(node.right) <= 0:
-            rotate_left(node)
+            return rotate_left(node)
         elif balance < -1 and getBalance(node.right) > 0:
             node.right = rotate_right(node.right)
-            rotate_left(node) 
+            return rotate_left(node) 
         
         return node 
     
-
-
 avl = AVLTree()
 values_to_insert = [10, 20, 30, 40, 50, 25]
 
 print("Insertando valores:", values_to_insert)
 for val in values_to_insert:
     avl.insert(val)
+    avl.Imprimir()
 
 print("\n--- Después de inserciones ---")
